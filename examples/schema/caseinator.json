@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "user_story": {
+        "type": "string"
+      },
+      "sources_of_complexity": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "refactored_user_stories": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "implementation_issues": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "agile_principles": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "title",
+      "description",
+      "user_story",
+      "sources_of_complexity",
+      "refactored_user_stories",
+      "implementation_issues",
+      "agile_principles"
+    ]
+  }
+  
