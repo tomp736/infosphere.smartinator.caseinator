@@ -33,6 +33,8 @@
         {{ agile }}
       </li>
     </ul>
+    <b v-if="caseinatorData.summary">Summary</b>
+    <p v-if="caseinatorData.summary">{{ caseinatorData.summary }}</p>
     <button type="button" @click="nextCaseinator">Next Caseinator</button>
   </div>
 

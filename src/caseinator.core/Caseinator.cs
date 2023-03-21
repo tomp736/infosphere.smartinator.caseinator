@@ -27,4 +27,7 @@ public class Caseinator
 
     [JsonPropertyName("agile_principles")]   
     public List<string> AgilePrinciples { get; set; }
+    
+    [JsonPropertyName("summary")]
+    public string Summary { get; set; } 
 }
