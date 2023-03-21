@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Caseinator Display</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+  <b>*These cases are provided without any guarantee of accuracy, and their validity or reliability is not assured or
+    warranted.</b>
+  <div id="app">
+    <h2>{{ caseinatorData.title }}</h2>
+    <p>{{ caseinatorData.description }}</p>
+    <b>User Story</b>
+    <p>{{ caseinatorData.user_story }}</p>
+    <b>Source of Complexity</b>
+    <ul>
+      <li v-for="(source) in caseinatorData.sources_of_complexity">
+        {{ source }}
+      </li>
+    </ul>
+    <b>Source of Complexity</b>
+    <ul>
+      <li v-for="(issue) in caseinatorData.implementation_issues">
+        {{ issue }}
+      </li>
+    </ul>
+    <b>Agile Principles</b>
+    <ul>
+      <li v-for="(agile) in caseinatorData.agile_principles">
+        {{ agile }}
+      </li>
+    </ul>
+    <button type="button" @click="nextCaseinator">Next Caseinator</button>
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        caseinatorData: null
+      },
+      created() {
+        this.getCaseinatorData();
+      },
+      methods: {
+        nextCaseinator() {
+          this.getCaseinatorData();
+        },
+        getCaseinatorData() {
+          fetch('http://localhost:5000/caseinator/random')
+            .then(response => response.json())
+            .then(data => {
+              this.caseinatorData = data;
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

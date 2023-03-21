@@ -1,0 +1,10 @@
+{
+    "GitHubRepositoryConfigs": [
+        {
+            "githubUser": "tomp736",
+            "repositoryName": "infosphere.smartinator.caseinator",
+            "branchName": "main",
+            "filePath": "examples/default.json"
+        }
+    ]
+}

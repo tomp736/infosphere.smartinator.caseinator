@@ -1,0 +1,25 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+WORKDIR /App
+
+# Copy csprojs
+COPY caseinator.core/caseinator.core.csproj ./caseinator.core/caseinator.core.csproj
+COPY caseinator.data/caseinator.data.csproj ./caseinator.data/caseinator.data.csproj
+COPY caseinator.webapi/caseinator.webapi.csproj ./caseinator.webapi/caseinator.webapi.csproj
+
+# Restore as distinct layers
+RUN dotnet restore caseinator.core
+RUN dotnet restore caseinator.data
+RUN dotnet restore caseinator.webapi
+
+COPY caseinator.core ./caseinator.core
+COPY caseinator.data ./caseinator.data
+COPY caseinator.webapi ./caseinator.webapi
+
+# Build and publish a release
+RUN dotnet publish caseinator.webapi -c Release -o out
+
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
+WORKDIR /App
+COPY --from=build-env /App/out .
+ENTRYPOINT ["dotnet", "caseinator.webapi.dll"]
