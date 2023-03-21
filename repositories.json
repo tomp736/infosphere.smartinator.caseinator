@@ -4,7 +4,13 @@
             "githubUser": "tomp736",
             "repositoryName": "infosphere.smartinator.caseinator",
             "branchName": "main",
-            "filePath": "examples/default.json"
+            "filePath": "examples/user-story-refactor.json"
+        },
+        {
+            "githubUser": "tomp736",
+            "repositoryName": "infosphere.smartinator.caseinator",
+            "branchName": "main",
+            "filePath": "examples/lean-principles.json"
         }
     ]
 }
