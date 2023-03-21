@@ -12,29 +12,71 @@
     warranted.</b>
   <div id="app">
     <h2>{{ caseinatorData.title }}</h2>
-    <p>{{ caseinatorData.description }}</p>
-    <b>User Story</b>
-    <p>{{ caseinatorData.user_story }}</p>
-    <b>Source of Complexity</b>
-    <ul>
-      <li v-for="(source) in caseinatorData.sources_of_complexity">
-        {{ source }}
+    <p v-if="caseinatorData.description">{{ caseinatorData.description }}</p>
+    <p v-if="caseinatorData.background">{{ caseinatorData.background }}</p>
+
+    <b v-if="caseinatorData.user_story">User Story</b>
+    <p v-if="caseinatorData.user_story">{{ caseinatorData.user_story }}</p>
+
+    <b v-if="caseinatorData.sources_of_complexity">Sources of Complexity</b>
+    <ul v-if="caseinatorData.sources_of_complexity">
+      <li v-for="(complex) in caseinatorData.sources_of_complexity">
+        {{ complex }}
       </li>
     </ul>
-    <b>Source of Complexity</b>
-    <ul>
+
+    <b v-if="caseinatorData.challenges">Challenges</b>
+    <ul v-if="caseinatorData.challenges">
+      <li v-for="(challenge) in caseinatorData.challenges">
+        {{ challenge }}
+      </li>
+    </ul>
+
+    <b v-if="caseinatorData.refactored_user_stories">Refactored User Stories</b>
+    <ul v-if="caseinatorData.refactored_user_stories">
+      <li v-for="(story) in caseinatorData.refactored_user_stories">
+        {{ story }}
+      </li>
+    </ul>
+
+    <b v-if="caseinatorData.solutions">Solutions</b>
+    <ul v-if="caseinatorData.solutions">
+      <li v-for="(solution) in caseinatorData.solutions">
+        {{ solution }}
+      </li>
+    </ul>
+
+    <b v-if="caseinatorData.implementation_issues">Implementation Issues</b>
+    <ul v-if="caseinatorData.implementation_issues">
       <li v-for="(issue) in caseinatorData.implementation_issues">
         {{ issue }}
       </li>
     </ul>
-    <b>Agile Principles</b>
-    <ul>
-      <li v-for="(agile) in caseinatorData.agile_principles">
-        {{ agile }}
+
+    <b v-if="caseinatorData.outcomes">Outcomes</b>
+    <ul v-if="caseinatorData.outcomes">
+      <li v-for="(outcome) in caseinatorData.outcomes">
+        {{ outcome }}
       </li>
     </ul>
+
+    <b v-if="caseinatorData.lean_principles">Lean Principles</b>
+    <ul v-if="caseinatorData.lean_principles">
+      <li v-for="(principle) in caseinatorData.lean_principles">
+        {{ principle }}
+      </li>
+    </ul>
+
+    <b v-if="caseinatorData.agile_principles">Agile Principles</b>
+    <ul v-if="caseinatorData.agile_principles">
+      <li v-for="(principle) in caseinatorData.agile_principles">
+        {{ principle }}
+      </li>
+    </ul>
+
     <b v-if="caseinatorData.summary">Summary</b>
     <p v-if="caseinatorData.summary">{{ caseinatorData.summary }}</p>
+
     <button type="button" @click="nextCaseinator">Next Caseinator</button>
   </div>
 
